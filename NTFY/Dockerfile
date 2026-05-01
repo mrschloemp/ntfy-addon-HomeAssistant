@@ -3,5 +3,5 @@
 #COPY server.yml /etc/ntfy/server.yml
 #ENTRYPOINT ["ntfy", "serve"]
 FROM binwiederhier/ntfy
-
-ENTRYPOINT ["ntfy", "serve", "--config", "/homeassistant/www/ntfy/server.yml"]
+# Dieser Befehl zeigt uns JEDEN Ordner im System an
+ENTRYPOINT ["find", "/", "-maxdepth", "2", "-not", "-path", "*/.*"]
