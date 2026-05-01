@@ -363,3 +363,13 @@ log-level: warn
 # log-file:
 # Access control
 # Access control
+# Die server.yml dynamisch schreiben
+cat <<EOF > $CONFIG_FILE
+base-url: "$BASE_URL"
+listen-http: ":$PORT"
+auth-file: "$AUTH_DB"
+auth-default-access: "$AUTH_MODE"
+# Das hier zwingt ntfy, die Auth-Daten bei jedem Request zu prüfen
+cache-file: "/data/cache.db"
+behind-proxy: true
+EOF
