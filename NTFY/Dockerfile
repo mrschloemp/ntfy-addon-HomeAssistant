@@ -1,8 +1,10 @@
-#FROM binwiederhier/ntfy
-#EXPOSE 80/tcp
-#COPY server.yml /etc/ntfy/server.yml
-#ENTRYPOINT ["ntfy", "serve"]
 FROM binwiederhier/ntfy
 
-# Wir starten ntfy und zeigen direkt auf den gemappten Pfad
-ENTRYPOINT ["ls", "-la", "/config/ntfy"]
+# Installiere jq, um die Home Assistant Optionen zu verarbeiten
+RUN apk add --no-cache jq
+
+# Start-Script kopieren und Rechte setzen
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
+
+ENTRYPOINT ["/run.sh"]
