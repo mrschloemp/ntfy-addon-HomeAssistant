@@ -1,3 +1,5 @@
+#1.2.1
+- new run.sh 
 # 0.1.7
 - new dockerfile, run.sh 
 # 0.0.4
