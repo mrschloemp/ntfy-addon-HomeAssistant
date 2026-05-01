@@ -361,3 +361,5 @@ log-level: warn
 # log-level-overrides:
 # log-format: text
 # log-file:
+auth-file: "/data/user.db"
+auth-default-access: "deny-all"
