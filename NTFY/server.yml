@@ -363,22 +363,3 @@ log-level: warn
 # log-file:
 # Access control
 # Access control
-# --- Sicherheit & Authentifizierung ---
-# Dieser Pfad sorgt dafür, dass die Datenbank in deinem HA-Editor unter /ntfy erscheint
-auth-file: "/config/ntfy/auth.db"
-
-# Standardmäßig darf niemand etwas (wichtig für den Cloudflare-Tunnel)
-auth-default-access: "deny-all"
-
-# Schaltet das Login-Formular im Browser frei
-enable-login: true
-require-login: true
-
-
-# --- Zusätzliche Features (Optional) ---
-# Erlaubt Anhänge (Bilder/Dateien) in Benachrichtigungen
-attachment-cache-dir: "/config/ntfy/attachments"
-attachment-total-size-limit: "500M"
-
-# Cache für Nachrichten, damit sie beim Öffnen der App nachgeladen werden
-cache-file: "/config/ntfy/cache.db"
