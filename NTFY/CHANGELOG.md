@@ -1,3 +1,5 @@
+# 0.1.7
+- new dockerfile, run.sh 
 # 0.0.4
 - Dockerfile Updated Localy
 
