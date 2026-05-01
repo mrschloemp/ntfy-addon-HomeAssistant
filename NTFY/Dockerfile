@@ -3,5 +3,6 @@
 #COPY server.yml /etc/ntfy/server.yml
 #ENTRYPOINT ["ntfy", "serve"]
 FROM binwiederhier/ntfy
-# Dieser Befehl zeigt uns JEDEN Ordner im System an
-ENTRYPOINT ["find", "/", "-maxdepth", "2", "-not", "-path", "*/.*"]
+
+# Wir starten ntfy und zeigen direkt auf den gemappten Pfad
+ENTRYPOINT ["ntfy", "serve", "--config", "/config/ntfy/server.yml"]
