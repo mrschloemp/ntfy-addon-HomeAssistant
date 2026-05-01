@@ -39,17 +39,23 @@ EOF
 
 echo "server.yml geschrieben"
 
+# Auth-DB direkt anlegen ohne Server-Start
+if [ ! -f "$NTFY_AUTH_FILE" ]; then
+    echo "Erstelle Auth-DB..."
+    ntfy user list --config="$CONFIG_FILE" 2>/dev/null || true
+fi
+
 # Admin-User anlegen ODER Passwort aktualisieren
 if [ "$ADMIN_USER" != "null" ] && [ "$ADMIN_PASS" != "null" ]; then
     echo "Setze Admin-User: $ADMIN_USER"
     export NTFY_PASSWORD="$ADMIN_PASS"
 
-    if ! ntfy user add --role=admin "$ADMIN_USER" 2>/dev/null; then
+    if ! ntfy user add --role=admin "$ADMIN_USER" --config="$CONFIG_FILE" 2>/dev/null; then
         echo "User existiert bereits, aktualisiere Passwort..."
-        ntfy user change-pass "$ADMIN_USER"
+        ntfy user change-pass --config="$CONFIG_FILE" "$ADMIN_USER"
     fi
 
-    ntfy access everyone "*" deny 2>/dev/null || true
+    ntfy access --config="$CONFIG_FILE" everyone "*" deny 2>/dev/null || true
 fi
 
 echo "--- ntfy Server startet auf Port $PORT ---"
