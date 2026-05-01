@@ -3,6 +3,5 @@
 #COPY server.yml /etc/ntfy/server.yml
 #ENTRYPOINT ["ntfy", "serve"]
 FROM binwiederhier/ntfy
-# Wir kopieren NICHTS rein, damit GitHub nichts speichert
-# Wir starten ntfy und sagen ihm: Schau in den HA-Config-Ordner!
-ENTRYPOINT ["ntfy", "serve", "--config", "/config/ntfy/server.yml"]
+# Wir versuchen den absoluten HA-Pfad anzusprechen
+ENTRYPOINT ["ntfy", "serve", "--config", "/homeassistant/ntfy/server.yml"]
