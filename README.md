@@ -1,4 +1,4 @@
-# Farmer Eds Home Assistant Addon Repo
+# Michis Home Assistant Addon Repo
 
 Add https://github.com/mrschloemp/ntfy-addon-HomeAssistant to repositories in Addon Store.
 
