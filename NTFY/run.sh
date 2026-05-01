@@ -2,8 +2,10 @@
 
 OPTIONS_FILE="/data/options.json"
 CONFIG_FILE="/data/server.yml"
-AUTH_DB="/data/auth.db"
-CACHE_DB="/data/cache.db"
+
+# Globale Umgebungsvariablen (wie in den Docs empfohlen)
+export NTFY_AUTH_FILE="/data/auth.db"
+export NTFY_CACHE_FILE="/data/cache.db"
 
 echo "--- ntfy Setup startet ---"
 
@@ -11,7 +13,7 @@ echo "--- ntfy Setup startet ---"
 RESET=$(jq --raw-output '.reset_data' $OPTIONS_FILE)
 if [ "$RESET" = "true" ]; then
     echo "!!! RESET-MODUS AKTIVIERT !!!"
-    rm -f $AUTH_DB $CACHE_DB /data/*.db
+    rm -f $NTFY_AUTH_FILE $NTFY_CACHE_FILE /data/*.db
     echo "Daten wurden bereinigt."
 fi
 
@@ -22,26 +24,28 @@ AUTH_MODE=$(jq --raw-output '.auth_default_access' $OPTIONS_FILE)
 ADMIN_USER=$(jq --raw-output '.admin_user' $OPTIONS_FILE)
 export NTFY_PASSWORD=$(jq --raw-output '.admin_password' $OPTIONS_FILE)
 
-# 1. server.yml schreiben
+# 1. Datenbank-Datei sicherheitshalber erstellen, falls sie fehlt
+touch $NTFY_AUTH_FILE
+chmod 0600 $NTFY_AUTH_FILE
+
+# 2. server.yml schreiben
 cat <<EOF > $CONFIG_FILE
 base-url: "$BASE_URL"
 listen-http: ":$PORT"
-auth-file: "$AUTH_DB"
-cache-file: "$CACHE_DB"
+auth-file: "$NTFY_AUTH_FILE"
+cache-file: "$NTFY_CACHE_FILE"
 auth-default-access: "$AUTH_MODE"
 behind-proxy: true
 EOF
 
-# 2. Admin-Benutzer anlegen
+# 3. Admin-Benutzer anlegen
 if [ "$ADMIN_USER" != "null" ] && [ "$NTFY_PASSWORD" != "null" ]; then
     echo "Stelle Admin-Benutzer '$ADMIN_USER' sicher..."
+    # ntfy nutzt automatisch NTFY_AUTH_FILE und NTFY_PASSWORD
+    ntfy user add --role=admin "$ADMIN_USER" || true
     
-    # In ntfy 2.22.x nutzen wir die Umgebungsvariable und das config-Flag für den Pfad
-    ntfy user add --config=$CONFIG_FILE --role=admin "$ADMIN_USER" || true
-    
-    # Berechtigungen setzen (hier wird das config-Flag genutzt, um die DB zu finden)
     echo "Setze Berechtigungen für $ADMIN_USER..."
-    ntfy access --config=$CONFIG_FILE "$ADMIN_USER" "*" read-write || true
+    ntfy access "$ADMIN_USER" "*" read-write || true
 fi
 
 echo "--- ntfy wird gestartet ---"
