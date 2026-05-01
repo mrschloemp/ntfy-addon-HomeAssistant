@@ -3,5 +3,5 @@
 #COPY server.yml /etc/ntfy/server.yml
 #ENTRYPOINT ["ntfy", "serve"]
 FROM binwiederhier/ntfy
-#ENTRYPOINT ["ntfy", "serve", "--config", "/config/www/ntfy/server.yml"]
-ENTRYPOINT ["ls", "-R", "/config"]
+
+ENTRYPOINT ["ntfy", "serve", "--config", "/homeassistant/www/ntfy/server.yml"]
