@@ -1,24 +1,26 @@
 {
   "name": "ntfy Server",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "slug": "ntfy_server",
-  "description": "Privater ntfy-Server mit Benutzerverwaltung",
+  "description": "Privater ntfy-Server mit Reset-Funktion",
   "arch": ["aarch64", "amd64", "armhf", "armv7"],
   "startup": "services",
   "boot": "auto",
   "host_network": true,
   "options": {
-    "base_url": "https://",
+    "base_url": "https://ntfy.0oe.de",
     "listen_port": 8000,
     "auth_default_access": "deny-all",
     "admin_user": "admin",
-    "admin_password": "dein_sicheres_passwort"
+    "admin_password": "dein_sicheres_passwort",
+    "reset_data": false
   },
   "schema": {
     "base_url": "str",
     "listen_port": "int(1,65535)",
     "auth_default_access": "list(read-write|read-only|deny-all)",
     "admin_user": "str",
-    "admin_password": "password"
+    "admin_password": "password",
+    "reset_data": "bool"
   }
 }
