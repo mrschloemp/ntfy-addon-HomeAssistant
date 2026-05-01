@@ -39,10 +39,15 @@ EOF
 
 echo "server.yml geschrieben"
 
-# Auth-DB anlegen ohne Server-Start
+# Auth-DB anlegen: Server kurz starten damit ntfy die DB initialisiert
 if [ ! -f "$NTFY_AUTH_FILE" ]; then
-    echo "Erstelle Auth-DB..."
-    ntfy user list 2>/dev/null || true
+    echo "Initialisiere Auth-DB via Server-Start..."
+    ntfy serve &
+    SERVER_PID=$!
+    sleep 5
+    kill $SERVER_PID 2>/dev/null
+    wait $SERVER_PID 2>/dev/null
+    echo "Auth-DB bereit: $(ls -la $NTFY_AUTH_FILE 2>/dev/null || echo 'FEHLER: nicht erstellt')"
 fi
 
 # Admin-User anlegen ODER Passwort aktualisieren
