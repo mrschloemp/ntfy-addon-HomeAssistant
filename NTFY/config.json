@@ -1,5 +1,5 @@
 {
   ...
-  "map": ["config:rw"],
+  "map": ["homeassistant:rw"],
   ...
 }
