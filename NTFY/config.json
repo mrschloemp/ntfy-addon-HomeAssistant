@@ -8,7 +8,7 @@
   "boot": "auto",
   "host_network": true,
   "options": {
-    "base_url": "https://ntfy.0oe.de",
+    "base_url": "https://",
     "listen_port": 8000,
     "auth_default_access": "deny-all",
     "admin_user": "admin",
