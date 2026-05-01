@@ -1,9 +1,4 @@
 {
-  "name": "ntfy Server",
   ...
-  "map": ["homeassistant:rw"],
-  "full_access": true,
-  "privileged": ["SYS_ADMIN"],
-  "options": {},
-  "schema": {}
+  "map": ["homeassistant:rw"]
 }
