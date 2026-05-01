@@ -1,6 +1,6 @@
 name: "NTFY"
 description: "NTFY notification server addon"
-version: "0.1.1"
+version: "0.1.2"
 slug: "ntfy"
 url: "https://github.com/mrschloemp/ntfy-addon-HomeAssistant"
 init: false
