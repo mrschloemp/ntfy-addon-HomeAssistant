@@ -3,5 +3,5 @@
 #COPY server.yml /etc/ntfy/server.yml
 #ENTRYPOINT ["ntfy", "serve"]
 FROM binwiederhier/ntfy
-# Wir versuchen den absoluten HA-Pfad anzusprechen
-ENTRYPOINT ["ntfy", "serve", "--config", "/homeassistant/ntfy/server.yml"]
+# WICHTIG: Im Container heißt der HA-Ordner immer /config
+ENTRYPOINT ["ntfy", "serve", "--config", "/config/ntfy/server.yml"]
