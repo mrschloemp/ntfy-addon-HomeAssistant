@@ -1,4 +1,14 @@
 {
-  ...
-  "map": ["homeassistant:rw"]
+  "name": "ntfy Server",
+  "version": "1.0.0",
+  "slug": "ntfy_server",
+  "description": "ntfy server for Home Assistant",
+  "arch": ["aarch64", "amd64", "armhf", "armv7"],
+  "startup": "services",
+  "boot": "auto",
+  "map": [
+    "config:rw"
+  ],
+  "options": {},
+  "schema": {}
 }
