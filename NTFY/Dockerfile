@@ -5,4 +5,4 @@
 FROM binwiederhier/ntfy
 
 # Wir starten ntfy und zeigen direkt auf den gemappten Pfad
-ENTRYPOINT ["ntfy", "serve", "--config", "/config/ntfy/server.yml"]
+ENTRYPOINT ["ls", "-la", "/config/ntfy"]
