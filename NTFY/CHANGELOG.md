@@ -1,3 +1,5 @@
+# 1.2.3
+- Topic Correction 
 # 1.2.2
 - User Configuration over Addon
 
