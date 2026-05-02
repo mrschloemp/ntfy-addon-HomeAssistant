@@ -1,4 +1,4 @@
-![WebApp](https://github.com/mrschloemp/ntfy-addon-HomeAssistant/blob/main/NTFY/WebApp.png?raw=true)
+![WebApp](https://github.com/mrschloemp/ntfy-addon-HomeAssistant/blob/main/NTFY/ntfy-addon-config.png?raw=true)
 
 ## About
 [ntfy](https://ntfy.sh/) (ausgesprochen „notify“) ist ein einfacher, HTTP-basierter Pub/Sub-Benachrichtigungsdienst. Er ermöglicht es Ihnen, Benachrichtigungen per Skript von jedem beliebigen Computer und/oder über eine REST-API an Ihr Smartphone oder Ihren Desktop-Computer zu senden. Die Software ist äußerst flexibel und komplett kostenlos.
