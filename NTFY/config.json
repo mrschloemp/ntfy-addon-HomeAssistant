@@ -1,6 +1,6 @@
 {
   "name": "ntfy Server",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "slug": "ntfy_server",
   "description": "Privater ntfy-Server mit Reset-Funktion",
   "arch": ["aarch64", "amd64", "armhf", "armv7"],
@@ -14,7 +14,8 @@
     "admin_user": "admin",
     "admin_password": "dein_sicheres_passwort",
     "enable_web_ui": false,
-    "reset_data": false
+    "reset_data": false,
+    "users": []
   },
   "schema": {
     "base_url": "str",
@@ -23,6 +24,12 @@
     "admin_user": "str",
     "admin_password": "password",
     "enable_web_ui": "bool",
-    "reset_data": "bool"
+    "reset_data": "bool",
+    "users": [
+      {
+        "username": "str",
+        "password": "password"
+      }
+    ]
   }
 }
