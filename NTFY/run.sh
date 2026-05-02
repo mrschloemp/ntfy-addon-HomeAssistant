@@ -75,6 +75,7 @@ if [ "$USER_COUNT" -gt 0 ]; then
     while [ $i -lt $USER_COUNT ]; do
         USERNAME=$(jq --raw-output ".users[$i].username" $OPTIONS_FILE)
         PASSWORD=$(jq --raw-output ".users[$i].password" $OPTIONS_FILE)
+        TOPIC=$(jq --raw-output ".users[$i].topic" $OPTIONS_FILE)
 
         if [ "$USERNAME" != "null" ] && [ "$PASSWORD" != "null" ]; then
             echo "Setze User: $USERNAME"
@@ -83,6 +84,11 @@ if [ "$USER_COUNT" -gt 0 ]; then
             if ! ntfy user add --role=user "$USERNAME" 2>/dev/null; then
                 echo "User $USERNAME existiert bereits, aktualisiere Passwort..."
                 ntfy user change-pass "$USERNAME"
+            fi
+
+            if [ "$TOPIC" != "null" ] && [ "$TOPIC" != "" ]; then
+                echo "Setze Topic-Zugriff: $USERNAME -> $TOPIC (ro)"
+                ntfy access "$USERNAME" "$TOPIC" ro
             fi
         fi
 
