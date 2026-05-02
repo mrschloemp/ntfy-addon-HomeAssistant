@@ -1,4 +1,7 @@
-#1.2.1
+# 1.2.2
+- User Configuration over Addon
+
+# 1.2.1
 - new run.sh 
 # 0.1.7
 - new dockerfile, run.sh 
