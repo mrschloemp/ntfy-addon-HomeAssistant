@@ -1,3 +1,5 @@
+# 1.2.4
+- User Write Role hinzugefügt
 # 1.2.3
 - Topic Correction 
 # 1.2.2
