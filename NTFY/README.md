@@ -14,15 +14,16 @@ Vereinfacht verschickt nur der Admin die Benachrichtigungen. Für jeden Topic wi
 
 Yaml Vorlage: 
 notify:
-  - name: ntfy_notification
-    platform: ntfy
-    authentication: 'user-pass'
-    username: admin
-    password: dein_sicheres_passwort
-    url: 'https://deine_URL'
-    topic: 'homeassistant'
-    allow_topic_override: true
-    attachment_maxsize: 15M
+
+- name: ntfy_notification
+platform: ntfy
+authentication: 'user-pass'
+username: admin
+password: dein_sicheres_passwort
+url: 'https://deine_URL'
+topic: 'homeassistant'
+allow_topic_override: true
+attachment_maxsize: 15M
     
   - name: ntfy_notification_admin
     platform: ntfy
