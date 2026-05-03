@@ -13,17 +13,19 @@ Nach der Installation der hbrennhaeuser Integration wird in der configuration.ym
 Vereinfacht verschickt nur der Admin die Benachrichtigungen. Für jeden Topic wird eine neue notification eingerichtet:
 
 Yaml Vorlage: 
-notify:
 
-- name: ntfy_notification
-platform: ntfy
-authentication: 'user-pass'
-username: admin
-password: dein_sicheres_passwort
-url: 'https://deine_URL'
-topic: 'homeassistant'
-allow_topic_override: true
-attachment_maxsize: 15M
+![WebApp](https://github.com/mrschloemp/ntfy-addon-HomeAssistant/blob/main/NTFY/yaml-vorlage.png?raw=true)
+
+notify:
+  - name: ntfy_notification
+    platform: ntfy
+    authentication: 'user-pass'
+    username: admin
+    password: dein_sicheres_passwort
+    url: 'https://deine_URL'
+    topic: 'homeassistant'
+    allow_topic_override: true
+    attachment_maxsize: 15M
     
   - name: ntfy_notification_admin
     platform: ntfy
