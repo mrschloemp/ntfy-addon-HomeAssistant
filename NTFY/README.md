@@ -11,8 +11,8 @@ Dieses Addon läuft in kombination mit der der
 [ntfy Integration von hbrennhaesuer](https://github.com/hbrennhaeuser/homeassistant_integration_ntfy).
 Nach der Installation der hbrennhaeuser Integration wird in der configuration.yml der Benachrichtigungsdienst eingerichtet.
 Vereinfacht verschickt nur der Admin die Benachrichtigungen. Für jeden Topic wird eine neue notification eingerichtet:
-Yaml Vorlage:
-### NTFY Integration 
+
+Yaml Vorlage: 
 notify:
   - name: ntfy_notification
     platform: ntfy
